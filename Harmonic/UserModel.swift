@@ -10,8 +10,13 @@ import UIKit
 
 class UserModel: HarmonicModel {
    
-    var firstName : String = "";
-    var lastName : String = "";
+    var firstName : String?;
+    var lastName : String?;
+    var friend : UserModel?;
+    
+    init() {
+        super.init();
+    }
     
     init(json: Dictionary<String, AnyObject>) {
         super.init(json: json);
@@ -21,7 +26,8 @@ class UserModel: HarmonicModel {
         return [
             "first_name" : "firstName",
             "last_name" : "lastName",
-            "middle_name" : "MidName"
+            "middle_name" : "midName",
+            "friend" : "UserModel.friend"
         ];
     }
     

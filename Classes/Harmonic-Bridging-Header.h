@@ -3,3 +3,4 @@
 //
 
 #import "TryCatch.h"
+#import "InstantiateFromName.h"
