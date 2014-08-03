@@ -12,12 +12,12 @@ import UIKit
 
 class HarmonicModelCollection<T: HarmonicModel> {
     
-    var models : Array<T> = [];
-    
-    init(json : Array<Dictionary<String, AnyObject>>) {
+    class func inflate(json : Array<Dictionary<String, AnyObject>>) -> Array<T> {
+        var models : Array<T> = [];
         for (obj) in json {
             models += T.modelWithDictionary(obj);
         }
+        return models;
     }
     
 }

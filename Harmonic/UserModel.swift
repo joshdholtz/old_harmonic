@@ -12,7 +12,8 @@ class UserModel: HarmonicModel {
    
     var firstName : String?;
     var lastName : String?;
-    var friend : UserModel?;
+    var bestFriend : UserModel?;
+    var friends : Array<UserModel> = [];
     var birthday : NSDate?;
     
     // Mapping function used to map JSON keys to HarmonicModel variables
@@ -21,7 +22,8 @@ class UserModel: HarmonicModel {
             "first_name" : "firstName",
             "last_name" : "lastName",
             "middle_name" : "midName",
-            "friend" : "UserModel.friend", // Inflates a UserModel from 'friend' JSON Key to 'friend' variable
+            "best_friend" : "UserModel.bestFriend", // Inflates a UserModel from 'bestFriend' JSON Key to 'bestFriend' variable
+            "friends" : "UserModel.friends", // Inflates an array UserModel from 'friends' JSON Key to 'friends' variable
             "birthday" : "Birthday:birthday" // Formats 'birthday' JSON Key to 'birthday' variable with 'Birthday' formatter
         ];
     }

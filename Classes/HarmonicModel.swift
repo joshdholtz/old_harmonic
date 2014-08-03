@@ -59,13 +59,24 @@ class HarmonicModel: NSObject {
                     if (dotRange.location != Foundation.NSNotFound) {
                         var modelName : String = variableName.betterSubstringToIndex(dotRange.location);
 
-                        var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
-
                         var variableNameWithoutClass : String = variableName.betterSubstringFromIndex(dotRange.location + dotRange.length);
 
                         if (jsonValue is Dictionary<String, AnyObject>) {
+                            var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
                             model.inflate( (jsonValue as Dictionary<String, AnyObject>) );
+                            
                             self.setValue(model, forKey: variableNameWithoutClass);
+                        } else if (jsonValue is Array<Dictionary<String, AnyObject>>) {
+                            var models : Array<HarmonicModel> = [];
+                            
+                            for (json) in (jsonValue as Array<Dictionary<String, AnyObject>>) {
+                                var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
+                                model.inflate(json);
+                                
+                                models += model;
+                            }
+
+                            self.setValue(models, forKey: variableNameWithoutClass);
                         }
                         
                         

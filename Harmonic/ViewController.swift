@@ -27,20 +27,28 @@ class ViewController: UIViewController {
 
         // Sample parse JSON response
         var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
-            "friend" : ["first_name" : "Bandit", "last_name" : "The Cat"],
+            "best_friend" : ["first_name" : "Bandit", "last_name" : "The Cat"],
+            "friends" : [ ["first_name" : "Red Ranger"], ["first_name" : "Green Ranger"] ],
             "birthday" : "1989-03-01"
         ];
         
         // Single model
         var user : UserModel = UserModel(json: json);
         println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
-        println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
+        println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
+        for (friend) in user.friends {
+            println("\tFriend - \(friend.firstName)")
+        }
         
         // Collection of models
-        var users = HarmonicModelCollection<UserModel>(json:[json]);
-        var userInUsers = users.models[0];
+        var users = HarmonicModelCollection<UserModel>.inflate([json]);
+        var userInUsers = users[0];
         println("User in users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)");
-        println("\tFriend - \(userInUsers.friend?.firstName) \(userInUsers.friend?.lastName)")
+        println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")
+        for (friend) in user.friends {
+            println("\tFriend - \(friend.firstName)")
+        }
+        
         
     }
 
