@@ -12,6 +12,9 @@
 		03C818C2198DB3A4000087B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C818C0198DB3A4000087B7 /* Main.storyboard */; };
 		03C818C4198DB3A4000087B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C818C3198DB3A4000087B7 /* Images.xcassets */; };
 		03C818D0198DB3A4000087B7 /* HarmonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818CF198DB3A4000087B7 /* HarmonicTests.swift */; };
+		03C818DB198DB4E3000087B7 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DA198DB4E3000087B7 /* HarmonicModel.swift */; };
+		03C818DE198DB93C000087B7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DD198DB93C000087B7 /* UserModel.swift */; };
+		03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		03C818C9198DB3A4000087B7 /* HarmonicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C818CE198DB3A4000087B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03C818CF198DB3A4000087B7 /* HarmonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonicTests.swift; sourceTree = "<group>"; };
+		03C818DA198DB4E3000087B7 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
+		03C818DD198DB93C000087B7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModelCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		03C818B9198DB3A4000087B7 /* Harmonic */ = {
 			isa = PBXGroup;
 			children = (
+				03C818DC198DB92D000087B7 /* TestModels */,
 				03C818BC198DB3A4000087B7 /* AppDelegate.swift */,
 				03C818BE198DB3A4000087B7 /* ViewController.swift */,
 				03C818C0198DB3A4000087B7 /* Main.storyboard */,
@@ -113,8 +120,18 @@
 		03C818D9198DB3D0000087B7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				03C818DA198DB4E3000087B7 /* HarmonicModel.swift */,
+				03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		03C818DC198DB92D000087B7 /* TestModels */ = {
+			isa = PBXGroup;
+			children = (
+				03C818DD198DB93C000087B7 /* UserModel.swift */,
+			);
+			name = TestModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C818DB198DB4E3000087B7 /* HarmonicModel.swift in Sources */,
 				03C818BF198DB3A4000087B7 /* ViewController.swift in Sources */,
+				03C818DE198DB93C000087B7 /* UserModel.swift in Sources */,
 				03C818BD198DB3A4000087B7 /* AppDelegate.swift in Sources */,
+				03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
