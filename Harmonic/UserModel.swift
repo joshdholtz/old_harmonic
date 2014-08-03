@@ -20,7 +20,8 @@ class UserModel: HarmonicModel {
     override func keysToProperties() -> Dictionary<String, String> {
         return [
             "first_name" : "firstName",
-            "last_name" : "lastName"
+            "last_name" : "lastName",
+            "middle_name" : "MidName"
         ];
     }
     

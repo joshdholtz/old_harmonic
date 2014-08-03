@@ -15,6 +15,7 @@
 		03C818DB198DB4E3000087B7 /* HarmonicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DA198DB4E3000087B7 /* HarmonicModel.swift */; };
 		03C818DE198DB93C000087B7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DD198DB93C000087B7 /* UserModel.swift */; };
 		03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */; };
+		03C818E6198DF96A000087B7 /* TryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C818E5198DF96A000087B7 /* TryCatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,9 @@
 		03C818DA198DB4E3000087B7 /* HarmonicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModel.swift; sourceTree = "<group>"; };
 		03C818DD198DB93C000087B7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicModelCollection.swift; sourceTree = "<group>"; };
+		03C818E1198DF809000087B7 /* Harmonic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Harmonic-Bridging-Header.h"; sourceTree = "<group>"; };
+		03C818E5198DF96A000087B7 /* TryCatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryCatch.m; sourceTree = "<group>"; };
+		03C818E7198DFA30000087B7 /* TryCatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TryCatch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,9 @@
 			children = (
 				03C818DA198DB4E3000087B7 /* HarmonicModel.swift */,
 				03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */,
+				03C818E1198DF809000087B7 /* Harmonic-Bridging-Header.h */,
+				03C818E7198DFA30000087B7 /* TryCatch.h */,
+				03C818E5198DF96A000087B7 /* TryCatch.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 				03C818DE198DB93C000087B7 /* UserModel.swift in Sources */,
 				03C818BD198DB3A4000087B7 /* AppDelegate.swift in Sources */,
 				03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */,
+				03C818E6198DF96A000087B7 /* TryCatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,9 +363,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Harmonic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Harmonic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -366,9 +377,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Harmonic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Harmonic-Bridging-Header.h";
 			};
 			name = Release;
 		};

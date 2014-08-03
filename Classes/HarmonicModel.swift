@@ -39,7 +39,21 @@ class HarmonicModel: NSObject {
         for (jsonKey, propertyName) in self.keysToProperties() {
             
             var jsonValue : AnyObject = self.json[jsonKey]!;
-            self.setValue(jsonValue, forKey: propertyName);
+            
+            // Try/catching with Obj-C bridge
+            var theTry = ({
+                () -> Void in
+                self.setValue(jsonValue, forKey: propertyName);
+            });
+            var theCatch = ({
+                (exception:NSException!) -> Void in
+                // Do something with the exception?
+            });
+            var theFinally = ({
+                () -> Void in
+                // Do something with the finally?
+            });
+            TryCatch.trying(theTry, withCatch: theCatch, withFinally: theFinally);
             
         }
         
