@@ -13,9 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // Override point for customization after application launch.
+        AppDelegate.initHarmonic();
         return true
     }
 
@@ -41,6 +40,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    class func initHarmonic() {
+        // Formatter for Birthday
+        HarmonicFormatter.sharedInstance.addFormatter("Birthday", formatter: HarmonicFormatterFunction(formatter:
+            { (value: AnyObject) -> AnyObject in
+                
+                let dateStringFormatter = NSDateFormatter()
+                dateStringFormatter.dateFormat = "yyyy-MM-dd"
+                dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                let date = dateStringFormatter.dateFromString(value as String);
+                
+                return date;
+            }));
+    }
 
 }
 

@@ -62,7 +62,7 @@ class HarmonicModel: NSObject {
                         var variableNameWithoutClass : String = variableName.betterSubstringFromIndex(dotRange.location + dotRange.length);
 
                         if (jsonValue is Dictionary<String, AnyObject>) {
-                            var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
+                            var model : HarmonicModel = self.instantiateMoel(modelName);
                             model.inflate( (jsonValue as Dictionary<String, AnyObject>) );
                             
                             self.setValue(model, forKey: variableNameWithoutClass);
@@ -70,7 +70,7 @@ class HarmonicModel: NSObject {
                             var models : Array<HarmonicModel> = [];
                             
                             for (json) in (jsonValue as Array<Dictionary<String, AnyObject>>) {
-                                var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
+                                var model : HarmonicModel = self.instantiateMoel(modelName);
                                 model.inflate(json);
                                 
                                 models += model;
@@ -78,7 +78,6 @@ class HarmonicModel: NSObject {
 
                             self.setValue(models, forKey: variableNameWithoutClass);
                         }
-                        
                         
                     }
                     // Use the formatter function
@@ -113,6 +112,20 @@ class HarmonicModel: NSObject {
             
         }
         
+    }
+    
+    func instantiateMoel(modelName : String) -> HarmonicModel {
+        var appName : String = "";
+        if (HarmonicConfig.sharedInstance.dynamicModelOverrideName?) {
+            appName = HarmonicConfig.sharedInstance.dynamicModelOverrideName!;
+        } else if (HarmonicConfig.sharedInstance.unitTestMode) {
+            appName = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as String
+            appName = appName.stringByAppendingString("Tests");
+        }
+        
+        var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName, withAppName: appName) as HarmonicModel);
+        
+        return model;
     }
     
 }

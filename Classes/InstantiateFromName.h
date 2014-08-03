@@ -11,5 +11,6 @@
 @interface InstantiateFromName : NSObject
 
 + (id)instantiateFromName:(NSString*)name;
++ (id)instantiateFromName:(NSString*)name withAppName:(NSString*)appName;
 
 @end

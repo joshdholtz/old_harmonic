@@ -12,18 +12,6 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Formatter for Birthday
-        HarmonicFormatter.sharedInstance.addFormatter("Birthday", formatter: HarmonicFormatterFunction(formatter:
-            { (value: AnyObject) -> AnyObject in
-                
-                let dateStringFormatter = NSDateFormatter()
-                dateStringFormatter.dateFormat = "yyyy-MM-dd"
-                dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-                let date = dateStringFormatter.dateFromString(value as String);
-                
-                return date;
-            }));
 
         // Sample parse JSON response
         var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
