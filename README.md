@@ -18,15 +18,30 @@ Clone the repository and drop in the .swift files from the "Classes" directory i
 
 ## Usage
 
-### Very basic example
+### Very basic unexplained example
 
 ```swift
 // Some view controller or something
 
-var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz", "friend" :
-    ["first_name" : "Bandit", "last_name" : "The Cat"]
+// Formatter for Birthday (advanced)
+HarmonicFormatter.sharedInstance.addFormatter("Birthday", formatter: HarmonicFormatterFunction(formatter:
+    { (value: AnyObject) -> AnyObject in
+        
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let date = dateStringFormatter.dateFromString(value as String);
+        
+        return date;
+    }));
+
+// Sample parse JSON response
+var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz",
+    "friend" : ["first_name" : "Bandit", "last_name" : "The Cat"],
+    "birthday" : "1989-03-01"
 ];
 
+// Single model
 var user : UserModel = UserModel(json: json);
 println("User - \(user.firstName) \(user.lastName)")
 println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
@@ -35,6 +50,7 @@ println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
 //
 // Note: Names print with "Optional" wrapper because that is how I defined my UserModel attributes
 
+// Collection of models
 var users = HarmonicModelCollection<UserModel>(json:[json]);
 var userInUsers = users.models[0];
 println("User in users - \(userInUsers.firstName) \(userInUsers.lastName)");
@@ -53,6 +69,7 @@ class UserModel: HarmonicModel {
     var firstName : String?;
     var lastName : String?;
     var friend : UserModel?;
+    var birthday : NSDate?;
     
     // Mapping function used to map JSON keys to HarmonicModel properties
     override func keysToProperties() -> Dictionary<String, String> {
@@ -60,7 +77,8 @@ class UserModel: HarmonicModel {
             "first_name" : "firstName",
             "last_name" : "lastName",
             "middle_name" : "midName",
-            "friend" : "UserModel.friend"
+            "friend" : "UserModel.friend",
+            "birthday" : "Birthday:birthday"
         ];
     }
     
