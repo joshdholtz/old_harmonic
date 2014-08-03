@@ -17,6 +17,7 @@
 		03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */; };
 		03C818E6198DF96A000087B7 /* TryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C818E5198DF96A000087B7 /* TryCatch.m */; };
 		03C818E9198E145B000087B7 /* InstantiateFromName.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C818E8198E145B000087B7 /* InstantiateFromName.m */; };
+		03C818EC198E21DA000087B7 /* HarmonicFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818EB198E21DA000087B7 /* HarmonicFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		03C818E7198DFA30000087B7 /* TryCatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TryCatch.h; sourceTree = "<group>"; };
 		03C818E8198E145B000087B7 /* InstantiateFromName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstantiateFromName.m; sourceTree = "<group>"; };
 		03C818EA198E1469000087B7 /* InstantiateFromName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstantiateFromName.h; sourceTree = "<group>"; };
+		03C818EB198E21DA000087B7 /* HarmonicFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				03C818DA198DB4E3000087B7 /* HarmonicModel.swift */,
 				03C818DF198DE54F000087B7 /* HarmonicModelCollection.swift */,
+				03C818EB198E21DA000087B7 /* HarmonicFormatter.swift */,
 				03C818E1198DF809000087B7 /* Harmonic-Bridging-Header.h */,
 				03C818E7198DFA30000087B7 /* TryCatch.h */,
 				03C818E5198DF96A000087B7 /* TryCatch.m */,
@@ -252,6 +255,7 @@
 				03C818BD198DB3A4000087B7 /* AppDelegate.swift in Sources */,
 				03C818E0198DE54F000087B7 /* HarmonicModelCollection.swift in Sources */,
 				03C818E6198DF96A000087B7 /* TryCatch.m in Sources */,
+				03C818EC198E21DA000087B7 /* HarmonicFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

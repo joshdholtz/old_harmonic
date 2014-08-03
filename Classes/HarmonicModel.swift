@@ -72,7 +72,14 @@ class HarmonicModel: NSObject {
                     }
                     // Use the formatter function
                     else if (colonRange.location != Foundation.NSNotFound) {
+                        
+                        var formatterName : String = propertyName.betterSubstringToIndex(colonRange.location);
+                        
+                        var propertyNameWithoutFormatter : String = propertyName.betterSubstringFromIndex(colonRange.location + colonRange.length);
 
+                        var formattedValue : AnyObject? = HarmonicFormatter.sharedInstance.getFormatter(formatterName)?.formatter(value: jsonValue);
+                        println("Formatted value - \(formattedValue)");
+                        
                     }
                     // Just set the property
                     else {
@@ -101,7 +108,7 @@ class HarmonicModel: NSObject {
 extension String {
     
     func betterRangeOfString(string : String) -> NSRange {
-        return (self as NSString).rangeOfString(".");
+        return (self as NSString).rangeOfString(string);
     }
     
     func betterSubstringToIndex(to : Int) -> String {
