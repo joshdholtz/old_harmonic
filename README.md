@@ -18,7 +18,11 @@ Clone the repository and drop in the .swift files from the "Classes" directory i
 
 ## Usage
 
-### Very basic unexplained example
+### The Everything Example
+1. Registers a formatter to take a string value of "yyyy-MM-dd" and transforms it to an NSDate
+2. Hardcoded sample parse JSON response
+3. Parses a single model
+4. Parses a collection of models
 
 ```swift
 // Some view controller or something
