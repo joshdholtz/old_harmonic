@@ -14,14 +14,7 @@ class UserModel: HarmonicModel {
     var lastName : String?;
     var friend : UserModel?;
     
-    init() {
-        super.init();
-    }
-    
-    init(json: Dictionary<String, AnyObject>) {
-        super.init(json: json);
-    }
-
+    // Mapping function used to map JSON keys to HarmonicModel properties
     override func keysToProperties() -> Dictionary<String, String> {
         return [
             "first_name" : "firstName",
@@ -29,6 +22,16 @@ class UserModel: HarmonicModel {
             "middle_name" : "midName",
             "friend" : "UserModel.friend"
         ];
+    }
+    
+    // Required for now (needed for dynamic instantiation)
+    init() {
+        super.init();
+    }
+    
+    // Required for now (needed for dynamic instantiation)
+    init(json: Dictionary<String, AnyObject>) {
+        super.init(json: json);
     }
     
 }
