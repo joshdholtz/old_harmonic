@@ -59,7 +59,7 @@ class HarmonicModel: NSObject {
                     if (dotRange.location != Foundation.NSNotFound) {
                         var modelName : String = propertyName.betterSubstringToIndex(dotRange.location);
 
-                        var model : HarmonicModel = (InstantiateFromName.instantiateFromName("_TtC8Harmonic9UserModel") as HarmonicModel);
+                        var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
 
                         var propertyNameWithoutClass : String = propertyName.betterSubstringFromIndex(dotRange.location + dotRange.length);
 

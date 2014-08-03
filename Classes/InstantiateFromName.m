@@ -11,7 +11,10 @@
 @implementation InstantiateFromName
 
 + (id)instantiateFromName:(NSString *)name {
-    Class clazz = NSClassFromString(name);
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    NSString *classStringName = [NSString stringWithFormat:@"_TtC%d%@%d%@", appName.length, appName, name.length, name];
+    
+    Class clazz = NSClassFromString(classStringName);
     if (clazz) {
        return [[clazz alloc] init];
     }
