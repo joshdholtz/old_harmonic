@@ -32,6 +32,8 @@ println("User - \(user.firstName) \(user.lastName)")
 println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
 // Prints:  User - Optional("Josh") Optional("Holtz")
 //            Friend - Optional("Bandit") Optional("The Cat")
+//
+// Note: Names print with "Optional" wrapper because that is how I defined my UserModel attributes
 
 var users = HarmonicModelCollection<UserModel>(json:[json]);
 var userInUsers = users.models[0];
@@ -39,6 +41,8 @@ println("User in users - \(userInUsers.firstName) \(userInUsers.lastName)");
 println("\tFriend - \(userInUsers.friend?.firstName) \(userInUsers.friend?.lastName)")
 // Prints:  User in users - Optional("Josh") Optional("Holtz")
 //            Friend - Optional("Bandit") Optional("The Cat")
+//
+// Note: Names print with "Optional" wrapper because that is how I defined my UserModel attributes
 
 ```
 
