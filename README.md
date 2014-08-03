@@ -49,20 +49,20 @@ var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" :
 var user : UserModel = UserModel(json: json);
 println("User - \(user.firstName) \(user.lastName)")
 println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
-// Prints:  User - Optional("Josh") Optional("Holtz")
+// Prints:  User - Optional("Josh") Optional("Holtz") Optional(1989-03-01 06:00:00 +0000)
 //            Friend - Optional("Bandit") Optional("The Cat")
 //
-// Note: Names print with "Optional" wrapper because that is how I defined my UserModel attributes
+// Note: Names print with "Optional" wrapper because that is how I defined my UserModel variables
 
 // Collection of models
 var users = HarmonicModelCollection<UserModel>(json:[json]);
 var userInUsers = users.models[0];
 println("User in users - \(userInUsers.firstName) \(userInUsers.lastName)");
 println("\tFriend - \(userInUsers.friend?.firstName) \(userInUsers.friend?.lastName)")
-// Prints:  User in users - Optional("Josh") Optional("Holtz")
+// Prints:  User in users - Optional("Josh") Optional("Holtz") Optional(1989-03-01 06:00:00 +0000)
 //            Friend - Optional("Bandit") Optional("The Cat")
 //
-// Note: Names print with "Optional" wrapper because that is how I defined my UserModel attributes
+// Note: Names print with "Optional" wrapper because that is how I defined my UserModel variables
 
 ```
 
@@ -75,14 +75,14 @@ class UserModel: HarmonicModel {
     var friend : UserModel?;
     var birthday : NSDate?;
     
-    // Mapping function used to map JSON keys to HarmonicModel properties
-    override func keysToProperties() -> Dictionary<String, String> {
+    // Mapping function used to map JSON keys to HarmonicModel variables
+    override func keysToVariables() -> Dictionary<String, String> {
         return [
             "first_name" : "firstName",
             "last_name" : "lastName",
             "middle_name" : "midName",
-            "friend" : "UserModel.friend",
-            "birthday" : "Birthday:birthday"
+            "friend" : "UserModel.friend", // Inflates a UserModel from 'friend' JSON Key to 'friend' variable
+            "birthday" : "Birthday:birthday" // Formats 'birthday' JSON Key to 'birthday' variable with 'Birthday' formatter
         ];
     }
     
