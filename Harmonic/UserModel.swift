@@ -15,14 +15,14 @@ class UserModel: HarmonicModel {
     var friend : UserModel?;
     var birthday : NSDate?;
     
-    // Mapping function used to map JSON keys to HarmonicModel properties
-    override func keysToProperties() -> Dictionary<String, String> {
+    // Mapping function used to map JSON keys to HarmonicModel variables
+    override func keysToVariables() -> Dictionary<String, String> {
         return [
             "first_name" : "firstName",
             "last_name" : "lastName",
             "middle_name" : "midName",
-            "friend" : "UserModel.friend",
-            "birthday" : "Birthday:birthday"
+            "friend" : "UserModel.friend", // Inflates a UserModel from 'friend' JSON Key to 'friend' variable
+            "birthday" : "Birthday:birthday" // Formats 'birthday' JSON Key to 'birthday' variable with 'Birthday' formatter
         ];
     }
     

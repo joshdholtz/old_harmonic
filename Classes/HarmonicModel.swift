@@ -30,7 +30,7 @@ class HarmonicModel: NSObject {
         self.inflate(json);
     }
     
-    func keysToProperties() -> Dictionary<String, String> {
+    func keysToVariables() -> Dictionary<String, String> {
         fatalError("Must Override");
     }
     
@@ -41,7 +41,7 @@ class HarmonicModel: NSObject {
         self.json = json;
         
         // Iterates over mappings
-        for (jsonKey, propertyName) in self.keysToProperties() {
+        for (jsonKey, variableName) in self.keysToVariables() {
             
             if (self.json[jsonKey]) {
                 
@@ -52,20 +52,20 @@ class HarmonicModel: NSObject {
                 var theTry = ({
                     () -> Void in
                     
-                    var dotRange : NSRange = propertyName.betterRangeOfString(".");
-                    var colonRange : NSRange = propertyName.betterRangeOfString(":");
+                    var dotRange : NSRange = variableName.betterRangeOfString(".");
+                    var colonRange : NSRange = variableName.betterRangeOfString(":");
                     
-                    // Set the submodel property
+                    // Set the submodel variable
                     if (dotRange.location != Foundation.NSNotFound) {
-                        var modelName : String = propertyName.betterSubstringToIndex(dotRange.location);
+                        var modelName : String = variableName.betterSubstringToIndex(dotRange.location);
 
                         var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName) as HarmonicModel);
 
-                        var propertyNameWithoutClass : String = propertyName.betterSubstringFromIndex(dotRange.location + dotRange.length);
+                        var variableNameWithoutClass : String = variableName.betterSubstringFromIndex(dotRange.location + dotRange.length);
 
                         if (jsonValue is Dictionary<String, AnyObject>) {
                             model.inflate( (jsonValue as Dictionary<String, AnyObject>) );
-                            self.setValue(model, forKey: propertyNameWithoutClass);
+                            self.setValue(model, forKey: variableNameWithoutClass);
                         }
                         
                         
@@ -73,17 +73,18 @@ class HarmonicModel: NSObject {
                     // Use the formatter function
                     else if (colonRange.location != Foundation.NSNotFound) {
                         
-                        var formatterName : String = propertyName.betterSubstringToIndex(colonRange.location);
+                        var formatterName : String = variableName.betterSubstringToIndex(colonRange.location);
                         
-                        var propertyNameWithoutFormatter : String = propertyName.betterSubstringFromIndex(colonRange.location + colonRange.length);
+                        var variableNameWithoutFormatter : String = variableName.betterSubstringFromIndex(colonRange.location + colonRange.length);
 
                         var formattedValue : AnyObject? = HarmonicFormatter.sharedInstance.getFormatter(formatterName)?.formatter(value: jsonValue);
-                        println("Formatted value - \(formattedValue)");
+
                         
+                        self.setValue(formattedValue, forKey: variableNameWithoutFormatter);
                     }
-                    // Just set the property
+                    // Just set the variable
                     else {
-                        self.setValue(jsonValue, forKey: propertyName);
+                        self.setValue(jsonValue, forKey: variableName);
                     }
                     
                 });
