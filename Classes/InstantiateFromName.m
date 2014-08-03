@@ -11,6 +11,8 @@
 @implementation InstantiateFromName
 
 + (id)instantiateFromName:(NSString *)name {
+    
+    // Source for this - http://stackoverflow.com/questions/24030814/swift-language-nsclassfromstring
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
     NSString *classStringName = [NSString stringWithFormat:@"_TtC%d%@%d%@", appName.length, appName, name.length, name];
     
