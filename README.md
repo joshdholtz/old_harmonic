@@ -21,19 +21,56 @@ Clone the repository and drop in the .swift files from the "Classes" directory i
 ### Very basic example
 
 ```swift
+// Some view controller or something
 
-var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz", "middle_name" : ""];
+var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz", "friend" :
+    ["first_name" : "Bandit", "last_name" : "The Cat"]
+];
 
 var user : UserModel = UserModel(json: json);
 println("User - \(user.firstName) \(user.lastName)")
-// Prints "User - Josh Holtz"
-
+println("\tFriend - \(user.friend?.firstName) \(user.friend?.lastName)")
+// Prints:  User - Optional("Josh") Optional("Holtz")
+//            Friend - Optional("Bandit") Optional("The Cat")
 
 var users = HarmonicModelCollection<UserModel>(json:[json]);
 var userInUsers = users.models[0];
 println("User in users - \(userInUsers.firstName) \(userInUsers.lastName)");
-// Prints "User in users - Josh Holtz"
+println("\tFriend - \(userInUsers.friend?.firstName) \(userInUsers.friend?.lastName)")
+// Prints:  User in users - Optional("Josh") Optional("Holtz")
+//            Friend - Optional("Bandit") Optional("The Cat")
 
+```
+
+```swift
+// UserModel.swift
+class UserModel: HarmonicModel {
+   
+    var firstName : String?;
+    var lastName : String?;
+    var friend : UserModel?;
+    
+    // Mapping function used to map JSON keys to HarmonicModel properties
+    override func keysToProperties() -> Dictionary<String, String> {
+        return [
+            "first_name" : "firstName",
+            "last_name" : "lastName",
+            "middle_name" : "midName",
+            "friend" : "UserModel.friend"
+        ];
+    }
+    
+    // Required for now (needed for dynamic instantiation)
+    init() {
+        super.init();
+    }
+    
+    // Required for now (needed for dynamic instantiation)
+    init(json: Dictionary<String, AnyObject>) {
+        super.init(json: json);
+    }
+    
+}
 ```
 
 ## Author
