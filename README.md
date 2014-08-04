@@ -1,6 +1,6 @@
 # Harmonic - iOS
 
-A library for loading JSON objects and array into Swift models and collections
+A Swift library for loading JSON objects and array into Swift objects
 
 ```swift
 var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz"];
