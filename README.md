@@ -84,7 +84,7 @@ class UserModel: HarmonicModel {
     var firstName : String?;
     var lastName : String?;
     var bestFriend : UserModel?;
-    var friends : Array<UserModel> = [];
+    var friends : Array<UserModel>?;
     var birthday : NSDate?;
     
     // Mapping function used to map JSON keys to HarmonicModel variables
