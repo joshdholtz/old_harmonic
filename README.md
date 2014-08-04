@@ -2,6 +2,13 @@
 
 A library for loading JSON objects and array into Swift models and collections
 
+```swift
+var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz"];
+
+var user : UserModel = UserModel(json: json);
+println("User - \(user.firstName) \(user.lastName)");
+```
+
 ### Updates
 
 Version | Changes
