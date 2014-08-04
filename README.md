@@ -2,6 +2,13 @@
 
 A library for loading JSON objects and array into Swift models and collections
 
+```swift
+var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz"];
+
+var user : UserModel = UserModel(json: json);
+println("User - \(user.firstName) \(user.lastName)");
+```
+
 ### Updates
 
 Version | Changes
@@ -84,7 +91,7 @@ class UserModel: HarmonicModel {
     var firstName : String?;
     var lastName : String?;
     var bestFriend : UserModel?;
-    var friends : Array<UserModel> = [];
+    var friends : Array<UserModel>?;
     var birthday : NSDate?;
     
     // Mapping function used to map JSON keys to HarmonicModel variables
