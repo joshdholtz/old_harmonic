@@ -1,6 +1,6 @@
 # Harmonic - iOS
 
-A library for loading JSON objects and array into Swift models and collections
+A Swift library for loading JSON objects and arrays into Swift objects
 
 ```swift
 var json : Dictionary<String, AnyObject> = ["first_name" : "Josh", "last_name" : "Holtz"];
@@ -16,7 +16,11 @@ Version | Changes
 **0.1.0** | Initial release
 
 ### Features
-- Inflates models and collections
+- Inflates models from JSON objects and arrays
+- Uses mappings to set JSON values to model attributes
+    - Map primative-ish (integers, floats, booleans, strings) to attributes
+    - Map JSON objects and arrays to sub-models
+    - Map values with formatting functions (ex: take date as a string JSON value and format to NSDate for model)
 
 ## Installation
 
