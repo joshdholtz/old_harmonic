@@ -46,7 +46,7 @@ class HarmonicTests: XCTestCase {
     
     func testUserModel() {
         var user : UserModel = UserModel(json: jsonUser1);
-
+        
         // Standard variables
         XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal");
         XCTAssertEqual(jsonUser1["last_name"]! as String, user.lastName!, "Last name should equal ");
@@ -67,6 +67,31 @@ class HarmonicTests: XCTestCase {
         XCTAssertEqual( birthdayParts[1].toInt()! ,  user.birthday!.month(), "Birthdy months should equal");
         XCTAssertEqual( birthdayParts[2].toInt()! ,  user.birthday!.day(), "Birthdy days should equal");
         
+    }
+    
+    func testUserModelString() {
+        var user : UserModel = UserModel(string: "{\"birthday\":\"1989-03-01\",\"first_name\":\"Josh\",\"friends\":[{\"first_name\":\"Red Ranger\"},{\"first_name\":\"Green Ranger\"}],\"last_name\":\"Holtz\",\"best_friend\":{\"first_name\":\"Bandit\",\"last_name\":\"The Cat\"}}");
+
+        // Standard variables
+        XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal");
+        XCTAssertEqual(jsonUser1["last_name"]! as String, user.lastName!, "Last name should equal ");
+        
+        // Single model assocation
+        XCTAssertEqual(jsonUser1["best_friend"]!["first_name"]! as String, user.bestFriend!.firstName!, "Best friend's first names should equal");
+        
+        // Collection models association
+        var firstFriend : Dictionary<String, AnyObject> = jsonUser1["friends"]![0] as Dictionary<String, AnyObject>;
+        XCTAssertEqual(jsonUser1["friends"]!.count, user.friends.count, "Friend's count should equal");
+        XCTAssertEqual(firstFriend["first_name"]! as String, user.friends[0].firstName!, "Friend's first name should be equal");
+        
+        // Formatter function
+        XCTAssertNotNil(user.birthday, "Birthday should not be nil");
+        
+        var birthdayParts : Array<String> = (jsonUser1["birthday"]! as String).componentsSeparatedByString("-");
+        XCTAssertEqual( birthdayParts[0].toInt()! ,  user.birthday!.year(), "Birthdy years should equal");
+        XCTAssertEqual( birthdayParts[1].toInt()! ,  user.birthday!.month(), "Birthdy months should equal");
+        XCTAssertEqual( birthdayParts[2].toInt()! ,  user.birthday!.day(), "Birthdy days should equal");
+
     }
 
     func testBadUserModel() {

@@ -6,26 +6,56 @@
 //  Copyright (c) 2014 Josh Holtz. All rights reserved.
 //
 
-class HarmonicModel: NSObject {
-   
-    // MARK: Class
-    
-    class func modelWithDictionary(json : Dictionary<String, AnyObject>) -> Self {
-        var model = self(json: json);
-        return model;
-    }
-    
-    // MARK: Instance
-    
-    var json = Dictionary<String, AnyObject>();
+// This class exists so that the compiler knows that 'modelWithDictionary' function
+// has an init method to instatiate with the 'self()' call. This prevents subclasses
+// of HarmonicModel from needing to have their own implemention of init()
+class HarmonicModelBase: NSObject {
     
     required init() {
         super.init();
     }
     
-    required init(json : Dictionary<String, AnyObject>) {
-        super.init();
+}
+
+class HarmonicModel: HarmonicModelBase {
+   
+    // MARK: Class
+    
+    class func modelWithDictionary(json : Dictionary<String, AnyObject>) -> Self {
+        var model = self();
+        model.inflate(json);
+        return model;
+    }
+    
+    // MARK: Instance
+    
+    var jsonParsingError : NSError?;
+    var json = Dictionary<String, AnyObject>();
+    
+    // Needed a garbage init method so the init() - with zero parameters) can be a convience method
+    init(hack : Bool) {
+        
+    }
+    
+    // This is a convience method so that sublcasses can herit this? Maybe?
+    convenience init() {
+        self.init(hack: false);
+    }
+    
+    convenience init(json : Dictionary<String, AnyObject>) {
+        self.init();
         self.inflate(json);
+    }
+    
+    convenience init(string : String) {
+        self.init();
+        
+        let jsonData = string.dataUsingEncoding(UInt(NSUTF8StringEncoding), allowLossyConversion: false);
+        let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &jsonParsingError) as Dictionary<String, AnyObject>
+        
+        if (!self.jsonParsingError) {
+            self.inflate(jsonDict);
+        }
     }
     
     func keysToVariables() -> Dictionary<String, String> {

@@ -25,14 +25,4 @@ class BrokenUserModel: HarmonicModel {
         ];
     }
     
-    // Required for now (needed for dynamic instantiation)
-    init() {
-        super.init();
-    }
-    
-    // Required for now (needed for dynamic instantiation)
-    init(json: Dictionary<String, AnyObject>) {
-        super.init(json: json);
-    }
-    
 }
