@@ -22,19 +22,19 @@ class ViewController: UIViewController {
         
         // Single model
         var user : UserModel = UserModel(json: json);
-        println("User - \(user.firstName) \(user.lastName) \(user.birthday)")
-        println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)")
+        println("User - \(user.firstName) \(user.lastName) \(user.birthday)");
+        println("\tBest Friend - \(user.bestFriend?.firstName) \(user.bestFriend?.lastName)");
         for (friend) in user.friends {
-            println("\tFriend - \(friend.firstName)")
+            println("\tFriend - \(friend.firstName)");
         }
         
         // Collection of models
         var users = HarmonicModelCollection<UserModel>.inflate([json]);
         var userInUsers = users[0];
         println("User in users - \(userInUsers.firstName) \(userInUsers.lastName) \(userInUsers.birthday)");
-        println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)")
+        println("\tBest Friend - \(userInUsers.bestFriend?.firstName) \(userInUsers.bestFriend?.lastName)");
         for (friend) in user.friends {
-            println("\tFriend - \(friend.firstName)")
+            println("\tFriend - \(friend.firstName)");
         }
         
         
