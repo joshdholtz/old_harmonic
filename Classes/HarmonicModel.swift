@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Josh Holtz. All rights reserved.
 //
 
-import UIKit
-
 class HarmonicModel: NSObject {
    
     // MARK: Class
@@ -62,21 +60,27 @@ class HarmonicModel: NSObject {
                         var variableNameWithoutClass : String = variableName.betterSubstringFromIndex(dotRange.location + dotRange.length);
 
                         if (jsonValue is Dictionary<String, AnyObject>) {
-                            var model : HarmonicModel = self.instantiateMoel(modelName);
-                            model.inflate( (jsonValue as Dictionary<String, AnyObject>) );
+                            var model : HarmonicModel? = self.instantiateModel(modelName);
+                            model?.inflate( (jsonValue as Dictionary<String, AnyObject>) );
                             
-                            self.setValue(model, forKey: variableNameWithoutClass);
+                            if (model) {
+                                self.setValue(model, forKey: variableNameWithoutClass);
+                            }
                         } else if (jsonValue is Array<Dictionary<String, AnyObject>>) {
                             var models : Array<HarmonicModel> = [];
                             
                             for (json) in (jsonValue as Array<Dictionary<String, AnyObject>>) {
-                                var model : HarmonicModel = self.instantiateMoel(modelName);
-                                model.inflate(json);
+                                var model : HarmonicModel? = self.instantiateModel(modelName);
+                                model?.inflate(json);
                                 
-                                models += model;
+                                if (model) {
+                                    models += model!;
+                                }
                             }
 
-                            self.setValue(models, forKey: variableNameWithoutClass);
+                            if (!models.isEmpty) {
+                                self.setValue(models, forKey: variableNameWithoutClass);
+                            }
                         }
                         
                     }
@@ -114,7 +118,7 @@ class HarmonicModel: NSObject {
         
     }
     
-    func instantiateMoel(modelName : String) -> HarmonicModel {
+    func instantiateModel(modelName : String) -> HarmonicModel? {
         var appName : String = "";
         if (HarmonicConfig.sharedInstance.dynamicModelOverrideName?) {
             appName = HarmonicConfig.sharedInstance.dynamicModelOverrideName!;
@@ -123,9 +127,9 @@ class HarmonicModel: NSObject {
             appName = appName.stringByAppendingString("Tests");
         }
         
-        var model : HarmonicModel = (InstantiateFromName.instantiateFromName(modelName, withAppName: appName) as HarmonicModel);
         
-        return model;
+        var maybeModel: AnyObject! = InstantiateFromName.instantiateFromName(modelName, withAppName: appName);
+        return maybeModel as? HarmonicModel;
     }
     
 }

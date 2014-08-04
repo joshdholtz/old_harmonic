@@ -27,6 +27,8 @@
 		03C8192A198EDF48000087B7 /* HarmonicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C81929198EDF48000087B7 /* HarmonicConfig.swift */; };
 		03C8192B198EDF48000087B7 /* HarmonicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C81929198EDF48000087B7 /* HarmonicConfig.swift */; };
 		03F48C1A198EEEDF004FF458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C818BC198DB3A4000087B7 /* AppDelegate.swift */; };
+		03F48C1C198F2B0B004FF458 /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F48C1B198F2B0B004FF458 /* BrokenUserModel.swift */; };
+		03F48C1D198F2D8B004FF458 /* BrokenUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F48C1B198F2B0B004FF458 /* BrokenUserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		03C818EA198E1469000087B7 /* InstantiateFromName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstantiateFromName.h; sourceTree = "<group>"; };
 		03C818EB198E21DA000087B7 /* HarmonicFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicFormatter.swift; sourceTree = "<group>"; };
 		03C81929198EDF48000087B7 /* HarmonicConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicConfig.swift; sourceTree = "<group>"; };
+		03F48C1B198F2B0B004FF458 /* BrokenUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenUserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				03C818DD198DB93C000087B7 /* UserModel.swift */,
+				03F48C1B198F2B0B004FF458 /* BrokenUserModel.swift */,
 			);
 			name = TestModels;
 			sourceTree = "<group>";
@@ -261,6 +265,7 @@
 			files = (
 				03C818DB198DB4E3000087B7 /* HarmonicModel.swift in Sources */,
 				03C818BF198DB3A4000087B7 /* ViewController.swift in Sources */,
+				03F48C1C198F2B0B004FF458 /* BrokenUserModel.swift in Sources */,
 				03C818E9198E145B000087B7 /* InstantiateFromName.m in Sources */,
 				03C818DE198DB93C000087B7 /* UserModel.swift in Sources */,
 				03C818BD198DB3A4000087B7 /* AppDelegate.swift in Sources */,
@@ -282,6 +287,7 @@
 				03C81925198ED81D000087B7 /* HarmonicFormatter.swift in Sources */,
 				03C81924198ED81D000087B7 /* HarmonicModelCollection.swift in Sources */,
 				03C81921198ED77F000087B7 /* HarmonicTests.swift in Sources */,
+				03F48C1D198F2D8B004FF458 /* BrokenUserModel.swift in Sources */,
 				03C8192B198EDF48000087B7 /* HarmonicConfig.swift in Sources */,
 				03C81926198ED81D000087B7 /* TryCatch.m in Sources */,
 			);

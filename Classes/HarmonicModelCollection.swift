@@ -6,10 +6,6 @@
 //  Copyright (c) 2014 Josh Holtz. All rights reserved.
 //
 
-import UIKit
-
-//: MutableCollection, Sliceable
-
 class HarmonicModelCollection<T: HarmonicModel> {
     
     class func inflate(json : Array<Dictionary<String, AnyObject>>) -> Array<T> {

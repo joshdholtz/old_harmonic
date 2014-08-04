@@ -44,7 +44,7 @@ class HarmonicTests: XCTestCase {
         super.tearDown()
     }
     
-    func testBasicModel() {
+    func testUserModel() {
         var user : UserModel = UserModel(json: jsonUser1);
 
         // Standard variables
@@ -68,14 +68,26 @@ class HarmonicTests: XCTestCase {
         XCTAssertEqual( birthdayParts[2].toInt()! ,  user.birthday!.day(), "Birthdy days should equal");
         
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+
+    func testBadUserModel() {
+        // Broken model
+        //  - has firstName mapped correctly
+        //  - has lastName mapped incorrectly
+        //  - has bestFriend mapped to bad model name
+        //  - has friends mapped to bad model name
+        //  - has format function on birthday that doesn't exist
+        var user : BrokenUserModel = BrokenUserModel(json: jsonUser1);
+        
+        // The good
+        XCTAssertEqual(jsonUser1["first_name"]! as String, user.firstName!, "First names should equal");
+        
+        // The nils
+        XCTAssertNil(user.lastName, "Last name should be nil");
+        XCTAssertNil(user.bestFriend, "Best friend should be nil");
+        XCTAssertNil(user.friends, "Friends should be nil");
+        XCTAssertNil(user.birthday, "Birthday should be nil");
+        
     }
-    
 }
 
 extension NSDate {

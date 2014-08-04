@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Josh Holtz. All rights reserved.
 //
 
-import Foundation
-
 class HarmonicFormatter {
     
     var formatters = Dictionary<String, HarmonicFormatterFunction>();
